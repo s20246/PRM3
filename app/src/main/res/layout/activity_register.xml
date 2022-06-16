@@ -11,14 +11,14 @@ tools:context=".RegisterActivity">
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/textInputLayoutEmail"
+    app:layout_constraintBottom_toTopOf="@id/textInputLayoutEmailRegister"
     android:text="Register"
     android:textSize="22dp"
     app:layout_constraintEnd_toEndOf="parent"/>
 
 
 <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/textInputLayoutEmail"
+    android:id="@+id/textInputLayoutEmailRegister"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintTop_toTopOf="parent"
@@ -30,17 +30,17 @@ tools:context=".RegisterActivity">
     android:hint="enter email">
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/editEmailRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"/>
 </com.google.android.material.textfield.TextInputLayout>
 
 <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/textInputLayoutPassword"
+    android:id="@+id/textInputLayoutPasswordRegister"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail"
+    app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmailRegister"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:layout_marginStart="30dp"
@@ -49,7 +49,7 @@ tools:context=".RegisterActivity">
     android:hint="enter password">
 
     <EditText
-        android:id="@+id/editPasword"
+        android:id="@+id/editPaswordRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"/>
@@ -63,6 +63,16 @@ tools:context=".RegisterActivity">
     android:text="register"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/textInputLayoutPassword"
+    app:layout_constraintTop_toBottomOf="@id/textInputLayoutPasswordRegister"
     android:layout_margin="30dp"/>
+
+    <TextView
+        android:id="@+id/redirectToLoginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
