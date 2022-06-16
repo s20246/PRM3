@@ -24,7 +24,7 @@ class RegisterActivity: AppCompatActivity() {
             if(findViewById<EditText>(R.id.editEmail).text.trim().toString().isNotEmpty() ||
                 findViewById<EditText>(R.id.editPasword).text.trim().toString().isNotEmpty()){
 
-                MainActivity().createUser(findViewById<EditText>(R.id.editEmail).text.trim().toString(),
+                createUser(findViewById<EditText>(R.id.editEmail).text.trim().toString(),
                     findViewById<EditText>(R.id.editPasword).text.trim().toString())
 
             } else {
@@ -33,6 +33,18 @@ class RegisterActivity: AppCompatActivity() {
 
             }
         }
+    }
+    fun createUser(email:String, password:String){
+        MainActivity().auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this){ task ->
+                if(task.isSuccessful){
+                    Log.e("Task message", "successful")
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Log.e("Task message", "Failed"+task.exception)
+                }
+            }
     }
 
 }

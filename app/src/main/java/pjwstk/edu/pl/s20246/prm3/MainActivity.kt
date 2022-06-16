@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
   //  private lateinit var auth: FirebaseAuth
 
-    private val auth = FirebaseAuth.getInstance()
+    public val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +27,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun createUser(email:String, password:String){
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this){ task ->
-                if(task.isSuccessful){
-                    Log.e("Task message", "successful")
-                } else {
-                    Log.e("Task message", "Failed"+task.exception)
-                }
-            }
-    }
+
 }
