@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "893591918917",
+    "project_id": "prm3-6692e",
+    "storage_bucket": "prm3-6692e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893591918917:android:7a83625b5ab38be899862c",
+        "android_client_info": {
+          "package_name": "pjwstk.edu.pl.s20246.prm3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893591918917-pacok9j8a5qhrb7vla48mnsnoivd68qe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCagM2WGIIL2JTwE-8pZAvJQ3cpbEziZ34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893591918917-pacok9j8a5qhrb7vla48mnsnoivd68qe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
