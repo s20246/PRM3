@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 // Annotates class to be a Room Database with a table (entity) of the Article class
 @Database(entities = arrayOf(Article::class), version = 1, exportSchema = false)
@@ -17,7 +20,7 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: ArticleRoomDatabase? = null
 
-        fun getDatabase(context: Context): ArticleRoomDatabase {
+        fun getDatabase(context: Context, scope: CoroutineScope): ArticleRoomDatabase {
             // if the INSTANCE is not null, then return it,
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
@@ -25,11 +28,39 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     ArticleRoomDatabase::class.java,
                     "article_database"
-                ).build()
+                ).addCallback(ArticleDatabaseCallback(scope))
+                    .build()
                 INSTANCE = instance
                 // return instance
                 instance
             }
+        }
+    }
+
+    private class ArticleDatabaseCallback(
+        private val scope: CoroutineScope
+    ) : RoomDatabase.Callback() {
+
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            INSTANCE?.let { database ->
+                scope.launch {
+                    populateDatabase(database.articleDao())
+                }
+            }
+        }
+
+        suspend fun populateDatabase(articleDao: ArticleDao) {
+            // Delete all content here.
+            articleDao.deleteAll()
+
+            // Add sample words.
+            var article = Article(1, "Hello", "path", "note")
+            articleDao.insert(article)
+            article = Article(2,"World", "path2", "note2")
+            articleDao.insert(article)
+
+            // TODO: Add more articles
         }
     }
 }
