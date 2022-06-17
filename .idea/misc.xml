@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/agala/AndroidStudioProjects/PRM3/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/agala/AndroidStudioProjects/PRM3/app/src/main/res/layout/activity_dashboard.xml" value="0.22" />
         <entry key="..\:/Users/agala/AndroidStudioProjects/PRM3/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/agala/AndroidStudioProjects/PRM3/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/agala/AndroidStudioProjects/PRM3/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Users/agala/AndroidStudioProjects/PRM3/app/src/main/res/layout/recyclerview_item.xml" value="0.1" />
       </map>
     </option>
   </component>
