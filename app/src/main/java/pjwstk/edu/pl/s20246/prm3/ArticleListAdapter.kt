@@ -1,5 +1,6 @@
 package pjwstk.edu.pl.s20246.prm3
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

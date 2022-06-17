@@ -10,4 +10,5 @@ data class Article(
     val title: String,
     val photoPath: String,
     val note: String,
-    val link: String)
+    val link: String,
+    var seen: Boolean)
