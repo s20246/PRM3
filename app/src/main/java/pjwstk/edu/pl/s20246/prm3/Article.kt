@@ -9,4 +9,5 @@ data class Article(
     val id: Int,
     val title: String,
     val photoPath: String,
-    val note: String)
+    val note: String,
+    val link: String)

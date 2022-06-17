@@ -27,7 +27,7 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ArticleRoomDatabase::class.java,
-                    "article_database"
+                    "arti_database"
                 ).addCallback(ArticleDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
@@ -54,10 +54,10 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
             // Delete all content here.
             articleDao.deleteAll()
 
-            // Add sample words.
-            var article = Article(1, "Hello", "path", "note")
+            // Add sample.
+            var article = Article(1, "title1", "path", "note", "link")
             articleDao.insert(article)
-            article = Article(2,"World", "path2", "note2")
+            article = Article(2,"title2", "path2", "note2", "link2")
             articleDao.insert(article)
 
             // TODO: Add more articles

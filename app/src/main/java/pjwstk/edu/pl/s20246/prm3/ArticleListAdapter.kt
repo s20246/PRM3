@@ -20,6 +20,8 @@ class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHo
         holder.bind(current.title)
         holder.bind(current.photoPath)
         holder.bind(current.note)*/
+        // wyswietlanie elementow !!!!
+        //dodac zdj
         holder.itemView.findViewById<TextView>(R.id.itemTitle).text=current.title
         holder.itemView.findViewById<TextView>(R.id.itemNote).text=current.note
     }
