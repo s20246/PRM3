@@ -60,7 +60,7 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
             article = Article(2,"title2", "path2", "note2", "link2",false)
             articleDao.insert(article)
 
-            // TODO: Add more articles
+            //
         }
     }
 }
