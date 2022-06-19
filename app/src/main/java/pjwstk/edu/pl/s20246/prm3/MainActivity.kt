@@ -34,20 +34,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val apiInterface = ApiInterface.create().getArticles()
 
-        //apiInterface.enqueue( Callback<List<Movie>>())
-        apiInterface.enqueue( object : Callback<List<Article>> {
-            override fun onResponse(call: Call<List<Article>>?, response: Response<List<Article>>?) {
 
-                if(response?.body() != null)
-                    println("-------------------------------------"+(response.body()!!))
-            }
 
-            override fun onFailure(call: Call<List<Article>>?, t: Throwable?) {
+        // autoincrement dla id może jakoś lepiej niz count w petli
 
-            }
-        })
+     //   val aList = ArticlesApplication().repository.allArticles
+      //  println(aList)
+       // Services().readJson()
+
 
     }
 

@@ -6,12 +6,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface ApiInterface {
-    @GET("posts")
-    fun getArticles() : Call<List<Article>>
+    //TODO zmienic url
+    @GET("v1/api.json?rss_url=https%3A%2F%2Fmoxie.foxnews.com%2Ffeedburner%2Fscitech.xml")
+    fun getArticles() : Call<FeedResponse>
 
     companion object {
 
-        var BASE_URL = "https://jsonplaceholder.typicode.com/"
+        var BASE_URL = "https://api.rss2json.com/"
 
         fun create() : ApiInterface {
 

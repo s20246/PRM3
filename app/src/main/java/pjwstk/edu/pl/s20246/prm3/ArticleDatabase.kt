@@ -27,7 +27,7 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ArticleRoomDatabase::class.java,
-                    "artic_database"
+                    "articl_database"
                 ).addCallback(ArticleDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
@@ -41,7 +41,17 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
 
+        override fun onOpen(db: SupportSQLiteDatabase) {
+            super.onOpen(db)
+            INSTANCE?.let { database ->
+                scope.launch {
+                    populateDatabase(database.articleDao())
+                }
+            }
+        }
+
         override fun onCreate(db: SupportSQLiteDatabase) {
+            println("___________on create")
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
@@ -54,11 +64,14 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
             // Delete all content here.
             articleDao.deleteAll()
 
-            // Add sample.
+            // TODO wczytac obiekty z listy w klasie Services
             var article = Article(1, "title1", "path", "note", "link",false)
             articleDao.insert(article)
-            article = Article(2,"title2", "path2", "note2", "link2",false)
+            article = Article(2,"title5", "path2", "note2", "link2",false)
             articleDao.insert(article)
+
+            Services().readJson(articleDao)
+
 
             //
         }
