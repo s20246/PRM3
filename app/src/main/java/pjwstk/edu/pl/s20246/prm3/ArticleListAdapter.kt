@@ -25,7 +25,11 @@ class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHo
         //dodac zdj
         holder.itemView.findViewById<TextView>(R.id.itemTitle).text=current.title
         holder.itemView.findViewById<TextView>(R.id.itemNote).text=current.note
+
+
+
     }
+
 
     class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 /*        private val articleItemView: TextView = itemView.findViewById(R.id.itemTitle)

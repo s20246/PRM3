@@ -1,13 +1,12 @@
 package pjwstk.edu.pl.s20246.prm3
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.core.view.get
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,17 +37,21 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        findViewById<RecyclerView>(R.id.recyclerview).addOnItemTouchListener(
-            RecyclerItemClick(
-                this,
-                recyclerView,
-                object : RecyclerItemClick.OnItemClickListener {
-                    override fun onItemClick(view: View, position: Int) {
-                        // widzi klik, wie gdzie byl
-                        //zmienic kolor tekstu
-                    }
-                })
-        )
+        findViewById<RecyclerView>(R.id.recyclerview).addOnItemTouchListener(RecyclerItemClick(this, recyclerView, object : RecyclerItemClick.OnItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
+                println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+position)
+                println(adapter.currentList[position].link)
+                adapter.currentList[position].seen=true
+                println(adapter.currentList[position].seen)
+                //findViewById<TextView>(R.id.itemTitle).setTextColor(Color.BLUE)
+                //val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(adapter.currentList[position].link))
+                //startActivity(browserIntent)
+                //TODO przekazac link do WebActivity
+                val intent = Intent(this@DashboardActivity, WebActivity::class.java)
+                startActivity(intent)
+
+            }
+        }))
 
     }
 }
