@@ -5,10 +5,6 @@ import kotlinx.coroutines.launch
 
 class ArticleViewModel(private val repository: ArticleRepository) : ViewModel() {
 
-    // Using LiveData and caching what allArticles returns has several benefits:
-    // - We can put an observer on the data (instead of polling for changes) and only update the
-    //   the UI when the data actually changes.
-    // - Repository is completely separated from the UI through the ViewModel.
     val allArticles: LiveData<List<Article>> = repository.allArticles.asLiveData()
 
     /**

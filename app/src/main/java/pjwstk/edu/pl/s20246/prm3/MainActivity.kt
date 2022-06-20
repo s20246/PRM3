@@ -14,15 +14,11 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-  //  private lateinit var auth: FirebaseAuth
-
     public val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-     //   auth = FirebaseAuth.getInstance()
 
         findViewById<Button>(R.id.goToRegister).setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
@@ -33,16 +29,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-        // autoincrement dla id może jakoś lepiej niz count w petli
-
-     //   val aList = ArticlesApplication().repository.allArticles
-      //  println(aList)
-       // Services().readJson()
-
 
     }
 

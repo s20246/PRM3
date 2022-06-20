@@ -8,21 +8,16 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-// Annotates class to be a Room Database with a table (entity) of the Article class
 @Database(entities = arrayOf(Article::class), version = 1, exportSchema = false)
 public abstract class ArticleRoomDatabase : RoomDatabase() {
 
     abstract fun articleDao(): ArticleDao
 
     companion object {
-        // Singleton prevents multiple instances of database opening at the
-        // same time.
         @Volatile
         private var INSTANCE: ArticleRoomDatabase? = null
 
         fun getDatabase(context: Context, scope: CoroutineScope): ArticleRoomDatabase {
-            // if the INSTANCE is not null, then return it,
-            // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
@@ -31,7 +26,6 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
                 ).addCallback(ArticleDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
-                // return instance
                 instance
             }
         }
@@ -51,7 +45,6 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
         }
 
         override fun onCreate(db: SupportSQLiteDatabase) {
-            println("___________on create")
             super.onCreate(db)
             INSTANCE?.let { database ->
                 scope.launch {
@@ -61,19 +54,8 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
         }
 
         suspend fun populateDatabase(articleDao: ArticleDao) {
-            // Delete all content here.
             articleDao.deleteAll()
-
-            // TODO wczytac obiekty z listy w klasie Services
-            var article = Article(1, "title1", "path", "note", "link",false)
-            articleDao.insert(article)
-            article = Article(2,"title5", "path2", "note2", "link2",false)
-            articleDao.insert(article)
-
             Services().readJson(articleDao)
-
-
-            //
         }
     }
 }

@@ -27,7 +27,6 @@ class DashboardActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         articleViewModel.allArticles.observe(this, Observer { words ->
-            // Update the cached copy of the words in the adapter.
             words?.let { adapter.submitList(it) }
         })
 

@@ -7,8 +7,6 @@ import retrofit2.Response
 
 class Services {
 
-   // var articleList = mutableListOf<Article>()
-
      fun readJson(articleDao: ArticleDao){
         val apiInterface = ApiInterface.create().getArticles()
 

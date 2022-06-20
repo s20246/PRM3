@@ -18,30 +18,13 @@ class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHo
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val current = getItem(position)
-        /*holder.bind(current.id.toString())
-        holder.bind(current.title)
-        holder.bind(current.photoPath)
-        holder.bind(current.note)*/
-        // wyswietlanie elementow !!!!
-        //dodac zdj
         holder.itemView.findViewById<TextView>(R.id.itemTitle).text=current.title
         holder.itemView.findViewById<TextView>(R.id.itemNote).text=current.note
-        //holder.itemView.findViewById<ImageView>(R.id.itemPicture)
         Picasso.get().load(current.photoPath).into( holder.itemView.findViewById<ImageView>(R.id.itemPicture));
-
-
-
     }
 
 
     class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-/*        private val articleItemView: TextView = itemView.findViewById(R.id.itemTitle)
-        private val articleItemView2: TextView = itemView.findViewById(R.id.itemNote)*/
-
-        /*fun bind(text: String?) {
-            articleItemView.text = text
-        }*/
-
         companion object {
             fun create(parent: ViewGroup): ArticleViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
