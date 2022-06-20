@@ -1,13 +1,14 @@
 package pjwstk.edu.pl.s20246.prm3
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHolder>(ArticlesComparator()) {
 
@@ -25,6 +26,8 @@ class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHo
         //dodac zdj
         holder.itemView.findViewById<TextView>(R.id.itemTitle).text=current.title
         holder.itemView.findViewById<TextView>(R.id.itemNote).text=current.note
+        //holder.itemView.findViewById<ImageView>(R.id.itemPicture)
+        Picasso.get().load(current.photoPath).into( holder.itemView.findViewById<ImageView>(R.id.itemPicture));
 
 
 

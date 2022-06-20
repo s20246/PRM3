@@ -47,6 +47,7 @@ class DashboardActivity : AppCompatActivity() {
                 //val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(adapter.currentList[position].link))
                 //startActivity(browserIntent)
                 //TODO przekazac link do WebActivity
+                // zmiana koloru po przeczytaniu
                 val intent = Intent(this@DashboardActivity, WebActivity::class.java)
                 startActivity(intent)
 
