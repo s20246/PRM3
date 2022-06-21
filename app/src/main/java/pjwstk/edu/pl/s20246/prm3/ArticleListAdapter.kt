@@ -1,5 +1,6 @@
 package pjwstk.edu.pl.s20246.prm3
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,10 +18,14 @@ class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHo
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
+        println(".....................................................................................")
         val current = getItem(position)
         holder.itemView.findViewById<TextView>(R.id.itemTitle).text=current.title
         holder.itemView.findViewById<TextView>(R.id.itemNote).text=current.note
         Picasso.get().load(current.photoPath).into( holder.itemView.findViewById<ImageView>(R.id.itemPicture));
+        if(current.seen){
+            holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.BLUE)
+        }
     }
 
 

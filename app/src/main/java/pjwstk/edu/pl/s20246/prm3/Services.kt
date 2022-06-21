@@ -30,7 +30,7 @@ class Services {
                                         i.photoPath,
                                         i.note,
                                         i.link,
-                                        false
+                                        true
                                     )
                                 )
                             }

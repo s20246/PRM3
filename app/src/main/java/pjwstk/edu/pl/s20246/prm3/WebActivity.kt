@@ -26,7 +26,8 @@ import kotlinx.android.synthetic.main.activity_web.*
 class WebActivity : AppCompatActivity() {
 
     //TODO przekazac link z dashboard activity
-    var url="https://www.foxnews.com/tech/china-accessed-data-us-tiktok-users-repeatedly-report"
+    //var url="https://www.foxnews.com/tech/china-accessed-data-us-tiktok-users-repeatedly-report"
+    var url = ""
     private var progress: Progress? = null
     private var isLoaded: Boolean = false
     private var doubleBackToExitPressedOnce = false
@@ -34,6 +35,7 @@ class WebActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
+        url = intent.extras?.getString("link").toString()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
         webView.settings.javaScriptEnabled = true

@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class DashboardActivity : AppCompatActivity() {
 
+    var linkTMP = ""
+
     private val articleViewModel: ArticleViewModel by viewModels {
         ArticleViewModelFactory((application as ArticlesApplication).repository)
     }
@@ -31,6 +33,7 @@ class DashboardActivity : AppCompatActivity() {
         })
 
         findViewById<Button>(R.id.logoutButton).setOnClickListener {
+            println("#################################"+linkTMP)
             MainActivity().auth.signOut()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -38,18 +41,10 @@ class DashboardActivity : AppCompatActivity() {
 
         findViewById<RecyclerView>(R.id.recyclerview).addOnItemTouchListener(RecyclerItemClick(this, recyclerView, object : RecyclerItemClick.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"+position)
-                println(adapter.currentList[position].link)
                 adapter.currentList[position].seen=true
-                println(adapter.currentList[position].seen)
-                //findViewById<TextView>(R.id.itemTitle).setTextColor(Color.BLUE)
-                //val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(adapter.currentList[position].link))
-                //startActivity(browserIntent)
-                //TODO przekazac link do WebActivity
-                // zmiana koloru po przeczytaniu
-                val intent = Intent(this@DashboardActivity, WebActivity::class.java)
+                val intent = Intent(view.context, WebActivity::class.java)
+                intent.putExtra("link",adapter.currentList[position].link)
                 startActivity(intent)
-
             }
         }))
 
