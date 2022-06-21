@@ -20,8 +20,10 @@
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         android:text="Welcome!"
+        android:textSize="40dp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,11 +40,12 @@
 
     <ImageView
         android:id="@+id/welcomePicture"
-        android:layout_width="216dp"
-        android:layout_height="206dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+        app:srcCompat="@drawable/gomezchybapng"
         tools:srcCompat="@drawable/gomezchybapng" />
 </androidx.constraintlayout.widget.ConstraintLayout>

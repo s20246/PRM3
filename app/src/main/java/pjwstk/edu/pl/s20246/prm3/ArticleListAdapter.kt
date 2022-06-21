@@ -46,7 +46,7 @@ class ArticleListAdapter :
         }
 
         if (current.seen) {
-            holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.RED)
+            holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.GRAY)
         } else {
             holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.BLACK)
         }
