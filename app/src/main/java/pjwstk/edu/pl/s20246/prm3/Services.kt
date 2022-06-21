@@ -16,7 +16,7 @@ class Services {
                     var feedResponse = response?.body()
                     var articles = feedResponse?.items
                     runBlocking {
-                        articleDao.deleteAll()
+                        //articleDao.deleteAll()
 
                         if (articles != null) {
                             var count = 0

@@ -13,4 +13,8 @@ class ArticleRepository(private val articleDao: ArticleDao) {
     suspend fun insert(article: Article) {
         articleDao.insert(article)
     }
+    @WorkerThread
+    suspend fun update(article: Article){
+        articleDao.update(article)
+    }
 }

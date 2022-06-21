@@ -13,34 +13,42 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.runBlocking
 
-class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHolder>(ArticlesComparator()) {
+class ArticleListAdapter :
+    ListAdapter<Article, ArticleListAdapter.ArticleViewHolder>(ArticlesComparator()) {
 
-    var currId=0
+    var currId = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        println(".....................................................................................")
+
         val current = getItem(position)
-        holder.itemView.findViewById<TextView>(R.id.itemTitle).text=current.title
-        holder.itemView.findViewById<TextView>(R.id.itemNote).text=current.note
-        Picasso.get().load(current.photoPath).into( holder.itemView.findViewById<ImageView>(R.id.itemPicture));
+        println("........................."+position+"..."+current.title+" seen: "+current.seen+" link "+current.link)
+        holder.itemView.findViewById<TextView>(R.id.itemTitle).text = current.title
+        holder.itemView.findViewById<TextView>(R.id.itemNote).text = current.note
+        Picasso.get().load(current.photoPath)
+            .into(holder.itemView.findViewById<ImageView>(R.id.itemPicture));
 
         holder.itemView.setOnClickListener {
-                current.seen=true
-
+            println(".......clicked.................."+position+"..."+current.title+" seen: "+current.seen+" url: "+current.link)
+            current.seen = true
             //TODO update database
-
-                val intent = Intent(it.context, WebActivity::class.java)
-                intent.putExtra("link",current.link)
-                it.context.startActivity(intent)
+            runBlocking {
+                ArticlesApplication().repository.update(current)
+            }
+            val intent = Intent(it.context, WebActivity::class.java)
+            intent.putExtra("link", current.link)
+            it.context.startActivity(intent)
         }
 
-        if(current.seen){
-            holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.BLUE)
+        if (current.seen) {
+            holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.RED)
+        } else {
+            holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.BLACK)
         }
     }
 

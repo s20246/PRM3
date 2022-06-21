@@ -22,7 +22,7 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ArticleRoomDatabase::class.java,
-                    "articl_database"
+                    "articll_database"
                 ).addCallback(ArticleDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
@@ -54,7 +54,7 @@ public abstract class ArticleRoomDatabase : RoomDatabase() {
         }
 
         suspend fun populateDatabase(articleDao: ArticleDao) {
-            articleDao.deleteAll()
+            //articleDao.deleteAll()
             Services().readJson(articleDao)
         }
     }

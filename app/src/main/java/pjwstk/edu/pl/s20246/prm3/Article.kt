@@ -6,12 +6,12 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "article_table")
 data class Article(
-    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val title: String,
     @SerializedName("thumbnail")
     val photoPath: String,
     @SerializedName("description")
     val note: String,
+    @PrimaryKey
     val link: String,
     var seen: Boolean)
