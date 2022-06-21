@@ -1,5 +1,8 @@
 package pjwstk.edu.pl.s20246.prm3
 
+import android.app.Activity
+import android.app.PendingIntent.getActivity
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,8 @@ import com.squareup.picasso.Picasso
 
 class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHolder>(ArticlesComparator()) {
 
+    var currId=0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         return ArticleViewHolder.create(parent)
     }
@@ -23,6 +28,17 @@ class ArticleListAdapter : ListAdapter<Article, ArticleListAdapter.ArticleViewHo
         holder.itemView.findViewById<TextView>(R.id.itemTitle).text=current.title
         holder.itemView.findViewById<TextView>(R.id.itemNote).text=current.note
         Picasso.get().load(current.photoPath).into( holder.itemView.findViewById<ImageView>(R.id.itemPicture));
+
+        holder.itemView.setOnClickListener {
+                current.seen=true
+
+            //TODO update database
+
+                val intent = Intent(it.context, WebActivity::class.java)
+                intent.putExtra("link",current.link)
+                it.context.startActivity(intent)
+        }
+
         if(current.seen){
             holder.itemView.findViewById<TextView>(R.id.itemTitle).setTextColor(Color.BLUE)
         }

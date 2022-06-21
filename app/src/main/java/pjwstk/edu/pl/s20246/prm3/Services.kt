@@ -11,9 +11,7 @@ class Services {
         val apiInterface = ApiInterface.create().getArticles()
 
         apiInterface.enqueue( object : Callback<FeedResponse> {
-            //TODO po wyjsciu z tej fun lista jest znowu pusta
             override fun onResponse(call: Call<FeedResponse>?, response: Response<FeedResponse>?) {
-                println("|||||||||||||||||||||||||||")
                 if (response?.body() != null) {
                     var feedResponse = response?.body()
                     var articles = feedResponse?.items
@@ -30,7 +28,7 @@ class Services {
                                         i.photoPath,
                                         i.note,
                                         i.link,
-                                        true
+                                        false
                                     )
                                 )
                             }

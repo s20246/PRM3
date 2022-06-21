@@ -39,14 +39,14 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        findViewById<RecyclerView>(R.id.recyclerview).addOnItemTouchListener(RecyclerItemClick(this, recyclerView, object : RecyclerItemClick.OnItemClickListener {
+        /*findViewById<RecyclerView>(R.id.recyclerview).addOnItemTouchListener(RecyclerItemClick(this, recyclerView, object : RecyclerItemClick.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
                 adapter.currentList[position].seen=true
                 val intent = Intent(view.context, WebActivity::class.java)
                 intent.putExtra("link",adapter.currentList[position].link)
                 startActivity(intent)
             }
-        }))
+        }))*/
 
     }
 }

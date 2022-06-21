@@ -1,9 +1,6 @@
 package pjwstk.edu.pl.s20246.prm3
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -14,6 +11,9 @@ interface ArticleDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(article: Article)
+
+    @Update
+    suspend fun update(article: Article)
 
     @Query("DELETE FROM article_table")
     suspend fun deleteAll()
